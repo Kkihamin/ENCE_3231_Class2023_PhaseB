@@ -2,7 +2,7 @@
 #define BUTTON_2  3
 #define GREEN_LED 4
 #define RED_LED   5
-//#define LED_Pin   13
+#define LED_Pin   13
 #define BUZZER    6
 
 #define DATA      9
@@ -207,11 +207,11 @@ void loop() {
     gString_Read = Serial.readStringUntil('\n');
     Serial.println(gString_Read);
     if(gString_Read == "$STR"){
-        //digitalWrite(LED_Pin, HIGH);
-        digitalWrite(GREEN_LED, HIGH);
+        digitalWrite(LED_Pin, HIGH);
+        //digitalWrite(GREEN_LED, HIGH);
     }else if(gString_Read == "$STP"){
-        //digitalWrite(LED_Pin, LOW);
-        digitalWrite(RED_LED, HIGH);
+        digitalWrite(LED_Pin, LOW);
+        //digitalWrite(RED_LED, HIGH);
     }
   }
   if(gcount1 == 0 && gcount2 == 0 && gcount3 == 0 && gcount4 == 0){
@@ -230,7 +230,7 @@ void loop() {
 //       digitalWrite(LED_Pin, LOW);
 //   }
 
-ISR(Timer4_COMPA_VECT){
+ISR(Timer1_COMPA_VECT){
   if(Serial.available() > 0) {
     gIsrflag = 1;
   }
